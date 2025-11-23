@@ -9,12 +9,7 @@ terraform {
 }
 
 provider "azurerm" {
-  features = {}
-
-  subscription_id = var.subscription_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  tenant_id       = var.tenant_id
+  features {}
 }
 
 # 1. Resource Group
@@ -56,7 +51,7 @@ resource "azurerm_linux_web_app" "app" {
   }
 
   app_settings = {
-    WEBSITES_PORT = "5000" # Change if your app uses another port
+    WEBSITES_PORT                  = "5000"
     DOCKER_REGISTRY_SERVER_URL      = "https://${azurerm_container_registry.acr.login_server}"
     DOCKER_REGISTRY_SERVER_USERNAME = azurerm_container_registry.acr.admin_username
     DOCKER_REGISTRY_SERVER_PASSWORD = azurerm_container_registry.acr.admin_password
