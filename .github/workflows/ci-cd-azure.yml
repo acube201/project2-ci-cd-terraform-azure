@@ -27,8 +27,7 @@ jobs:
         pip install -r app/requirements.txt
 
     - name: Run tests
-      run: |
-        echo "No tests yet, placeholder step"
+      run: echo "No tests yet, placeholder step"
 
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
@@ -54,9 +53,14 @@ jobs:
 
     - name: Terraform Apply
       working-directory: terraform
-      run: terraform apply -auto-approve
       env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
         ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      run: |
+        terraform apply -auto-approve \
+          -var subscription_id=${{ secrets.AZURE_SUBSCRIPTION_ID }} \
+          -var client_id=${{ secrets.AZURE_CLIENT_ID }} \
+          -var client_secret=${{ secrets.AZURE_CLIENT_SECRET }} \
+          -var tenant_id=${{ secrets.AZURE_TENANT_ID }}
