@@ -3,6 +3,12 @@ terraform/terraform.tfvars
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
 
+# Ignore Terraform working directory and lock files
+.terraform/
+*.tfstate.backup
+.terraform.lock.hcl
+
+
 # Ignore Python virtual environments
 venv/
 __pycache__/
