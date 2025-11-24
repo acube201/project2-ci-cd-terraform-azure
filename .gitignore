@@ -1,0 +1,11 @@
+# Ignore Terraform variable files containing secrets
+terraform/terraform.tfvars
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Ignore Python virtual environments
+venv/
+__pycache__/
+
+# Ignore other sensitive files
+.env

@@ -21,10 +21,10 @@ output "acr_admin_password" {
 
 output "webapp_name" {
   description = "The name of the deployed web app"
-  value       = azurerm_linux_web_app.webapp.name
+  value       = azurerm_linux_web_app.app.name
 }
 
 output "webapp_url" {
   description = "The default URL of the deployed web application"
-  value       = azurerm_linux_web_app.webapp.default_hostname
+  value       = azurerm_linux_web_app.app.default_hostname
 }
